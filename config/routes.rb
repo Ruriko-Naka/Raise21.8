@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  # 不要なのでコメントアウト
+  # get 'favorites/create'
+  # get 'favorites/destroy' 
   # 追加
   root 'tweets#index'
   
@@ -12,8 +15,12 @@ Rails.application.routes.draw do
   #get 'users/show'
   devise_for :users
   
+  # ネスト(入れ子)した形に変更
+  resources :tweets do
+    resource :favorites, only: [:create, :destroy]
+  end
+  
   # 追加
-  resources :tweets
   resources :users
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
