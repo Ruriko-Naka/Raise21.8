@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
-  # 不要なのでコメントアウト
+  get 'comments/create'
+  get 'comments/destroy'
+  # 不要なのでコメントアウト  
   # get 'favorites/create'
   # get 'favorites/destroy' 
+  
   # 追加
   root 'tweets#index'
   
@@ -13,11 +16,14 @@ Rails.application.routes.draw do
   #get 'tweets/create'
   #get 'users/index'
   #get 'users/show'
+  
   devise_for :users
   
   # ネスト(入れ子)した形に変更
+  # コメント機能（作成と削除）
   resources :tweets do
     resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   
   # 追加

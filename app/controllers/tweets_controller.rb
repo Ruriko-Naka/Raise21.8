@@ -23,7 +23,9 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
 # ===============追加==============
     @user = @tweet.user
-# =================================    
+# =================================
+    @comment = current_user.comments.build
+    @comments = @tweet.comments
   end
 
 # ===============追加=============
