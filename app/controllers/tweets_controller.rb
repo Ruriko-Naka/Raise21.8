@@ -10,8 +10,11 @@ class TweetsController < ApplicationController
 # ============追加================
     @tweet = Tweet.new(tweet_params)  # フォームから送られてきたデータ(body)をストロングパラメータを経由して@tweetに代入
     @tweet.user_id = current_user.id # user_idの情報はフォームからはきていないので、deviseのメソッドを使って「ログインしている自分のid」を代入
-    @tweet.save
-    redirect_to tweets_path
+    if @tweet.save
+      redirect_to tweets_path
+    else
+      render "new"
+    end
 # =================================
   end
   

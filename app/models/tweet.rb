@@ -1,5 +1,5 @@
 class Tweet < ApplicationRecord
-  validates :text, presence: true  #バリテーションしてます
+  validates :body, presence: true  #バリデーションしてます
   belongs_to :user  # 追加
   has_many :favorites  # 追加
   has_many :comments, dependent: :destroy  # 追加

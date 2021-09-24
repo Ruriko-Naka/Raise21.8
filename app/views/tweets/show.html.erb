@@ -16,4 +16,7 @@
   <hr>
   <p><span>email: </span><%=link_to comment.user.email, user_path(comment.user.id) %></p>
   <p><span>コメント内容: </span><%= comment.body %></p>
+  <% if current_user == comment.user %>
+      <%= link_to '削除', tweet_comment_path(@tweet, comment), method: :delete %>
+  <% end %>
 <% end %>
