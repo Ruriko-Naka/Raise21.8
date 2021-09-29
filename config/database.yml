@@ -19,7 +19,7 @@ default: &default
   password: R@iseNaka2021
   socket: /var/lib/mysql/mysql.sock
   host: localhost
-  
+
 
 development:
   <<: *default
